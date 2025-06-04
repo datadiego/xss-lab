@@ -1,4 +1,5 @@
-*{
+/* Diseño base */
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -7,7 +8,7 @@
     font-family: Helvetica;
 }
 
-form{
+form {
     display: flex;
     flex-direction: column;
     width: 300px;
@@ -41,15 +42,71 @@ button[type="submit"] {
     line-height: 1.5;
 }
 
-nav{
+nav {
     display: flex;
     gap: 20px;
     padding: 10px;
 }
 
-main{
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+}
+
+.warning {
+    background: #ffcc00;
+    color: black;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Media queries para diseño responsive */
+@media (max-width: 768px) {
+    nav {
+        gap: 10px;
+        text-align: center;
+    }
+
+    form {
+        width: 90%; /* Ajusta el ancho para que no se salga de la pantalla */
+        max-width: 300px; /* Limita el ancho máximo */
+        padding: 10px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .warning {
+        width: 90%; /* Ajusta el ancho */
+        max-width: 300px; /* Limita el ancho máximo */
+        text-align: center; /* Centra el texto */
+    }
+}
+
+@media (max-width: 480px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    button[type="submit"] {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    nav {
+        font-size: 14px;
+    }
+
+    form {
+        width: 100%; /* Ocupa todo el ancho disponible */
+        padding: 10px;
+    }
+
+    .warning {
+        width: 100%; /* Ocupa todo el ancho disponible */
+        padding: 8px; /* Ajusta el padding */
+        text-align: center; /* Centra el texto */
+    }
 }
