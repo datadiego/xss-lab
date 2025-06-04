@@ -1,0 +1,13 @@
+{% extends "base.njk" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block content %}
+<h1>Profile</h1>
+    <p>Welcome, {{ user.name }}!</p>
+    <p><a href="/logout">Logout</a></p>
+    <p><a href="/delete-account">Delete Account</a></p>
+
+{% endblock %}

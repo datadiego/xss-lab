@@ -1,0 +1,23 @@
+{% extends "base.njk" %}
+
+{% block title %}
+    Messages
+{% endblock %}
+
+{% block content %}
+<h1>Mensajes</h1>
+<form action="/messages" method="POST">
+    <label for="message">Nuevo mensaje:</label>
+    <input type="text" id="message" name="message" required>
+    <button type="submit">Enviar</button>
+</form>
+{% if messages.length > 0 %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message.text }} - {{ message.date }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay mensajes aun.</p>
+{% endif %}
+{% endblock %}

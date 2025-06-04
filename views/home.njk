@@ -1,0 +1,15 @@
+{% extends "base.njk" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+
+{% if user %}
+    <h1>Bienvenido, {{ user.name }}!</h1>
+{% else %}
+    <h1>Bienvenido!</h1>
+    <p>Por favor, inicia sesión o regístrate.</p>
+{% endif %}
+{% endblock %}
