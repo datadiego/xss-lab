@@ -18,6 +18,7 @@
     "express": "^5.1.0",
     "express-session": "^1.18.1",
     "nunjucks": "^3.2.4",
+    "socket.io": "^4.8.1",
     "standard": "^17.1.2"
   },
   "devDependencies": {

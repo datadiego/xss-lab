@@ -15,7 +15,8 @@ router.post('/login', (req, res) => {
     return res.status(401).render('error.njk', { error: 'Invalid name or password.' })
   }
   console.log('Login successful for user:', name)
-  req.session.user = { name } // Store user info in session
+  // Guarda también el id del usuario en la sesión
+  req.session.user = { id: user.id, name: user.name }
   res.status(200).redirect('/') // Redirect to private page after successful login
 })
 

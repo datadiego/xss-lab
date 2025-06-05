@@ -6,18 +6,39 @@
 
 {% block content %}
 <h1>Mensajes</h1>
-<form>
+<form id="messageForm" autocomplete="off">
     <label for="message">Nuevo mensaje:</label>
     <input type="text" id="message" name="message" required>
     <button type="submit">Enviar</button>
 </form>
-{% if messages.length > 0 %}
-    <ul>
-        {% for message in messages %}
-            <li>{{ message.text }} - {{ message.date }}</li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No hay mensajes aun.</p>
-{% endif %}
+<ul id="messagesList">
+    {% for message in messages %}
+        <li><b>{{ message.user_id }}</b>: {{ message.content }} - {{ message.timestamp }}</li>
+    {% endfor %}
+</ul>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+    const form = document.getElementById('messageForm');
+    const input = document.getElementById('message');
+    const messagesList = document.getElementById('messagesList');
+    const userId = {{ user.id if user.id else 0 }};
+
+    socket.on('messages', function(messages) {
+        messagesList.innerHTML = '';
+        messages.forEach(function(msg) {
+            const li = document.createElement('li');
+            li.innerHTML = `<b>${msg.user_id}</b>: ${msg.content} - ${msg.timestamp}`;
+            messagesList.appendChild(li);
+        });
+    });
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (input.value.trim()) {
+            socket.emit('newMessage', { user_id: userId, content: input.value });
+            input.value = '';
+        }
+    });
+</script>
 {% endblock %}

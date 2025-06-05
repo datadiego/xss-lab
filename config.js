@@ -5,7 +5,6 @@ import SQLiteStoreFactory from 'connect-sqlite3'
 import nunjucks from 'nunjucks'
 
 export const app = express()
-const PORT = process.env.PORT || 3000
 
 app.use(express.static('public'))
 
@@ -36,8 +35,8 @@ app.use(sessionMiddleware)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server is running on http://localhost:${PORT}`)
+// Exporta la función de inicialización
+export function initializeApp() {
   createDatabase()
   const db = getDatabase()
   process.on('SIGINT', () => {
@@ -52,4 +51,4 @@ app.listen(PORT, '0.0.0.0', () => {
     process.exit(0)
   })
   console.log('Database is ready to use.')
-})
+}
