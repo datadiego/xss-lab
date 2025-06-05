@@ -12,9 +12,9 @@
     <button type="submit">Enviar</button>
 </form>
 <ul id="messagesList">
-    {% for message in messages %}
-        <li><b>{{ message.user_id }}</b>: {{ message.content }} - {{ message.timestamp }}</li>
-    {% endfor %}
+{% for message in messages | reverse %}
+    <li><b>{{ message.user_name }}</b>: {{ message.content }}</li>
+{% endfor %}
 </ul>
 <script src="/socket.io/socket.io.js"></script>
 <script>
@@ -24,14 +24,14 @@
     const messagesList = document.getElementById('messagesList');
     const userId = {{ user.id if user.id else 0 }};
 
-    socket.on('messages', function(messages) {
-        messagesList.innerHTML = '';
-        messages.forEach(function(msg) {
-            const li = document.createElement('li');
-            li.innerHTML = `<b>${msg.user_id}</b>: ${msg.content} - ${msg.timestamp}`;
-            messagesList.appendChild(li);
-        });
+socket.on('messages', function(messages) {
+    messagesList.innerHTML = '';
+    messages.slice().reverse().forEach(function(msg) {
+        const li = document.createElement('li');
+        li.innerHTML = `<b>${msg.user_name}</b>: ${msg.content};
+        messagesList.appendChild(li);
     });
+});
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();

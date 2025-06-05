@@ -2,7 +2,12 @@ import { getDatabase } from '../db/createDatabase.js'
 
 export const getMessages = () => {
     const db = getDatabase()
-    const sql = 'SELECT * FROM messages'
+    const sql = `
+        SELECT messages.id, messages.user_id, users.name as user_name, messages.content, messages.timestamp
+        FROM messages
+        JOIN users ON messages.user_id = users.id
+        ORDER BY messages.timestamp ASC
+    `
     const messages = db.prepare(sql).all()
     db.close()
     return messages

@@ -54,6 +54,14 @@ main {
     align-items: center;
     padding: 20px;
 }
+ul{
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 10px;
+}
+li{
+    list-style: none;
+}
 
 .warning {
     background: #ffcc00;
@@ -91,7 +99,7 @@ main {
     input[type="email"],
     input[type="password"],
     button[type="submit"] {
-        font-size: 14px;
+        font-size: 16px;
         padding: 8px;
     }
 
