@@ -6,6 +6,11 @@ Registro
 
 {% block content %}
 <h1>Registro</h1>
+<div class="warning">
+  <p style="background:red;color:black;text-align:center;">⚠️ Este laboratorio es vulnerable a diferentes ataques ⚠️</p>
+  <p style="background:red;color:black;text-align:center;">Los datos de usuarios y contraseñas pueden quedar expuestos durante el taller</p>
+  <p style="background:red;color:black;text-align:center;"><b style="background:red;color:black;">NO</b> os registreis con datos que realmente useis en internet o dispositivos</p>
+</div>
 <form action="/register" method="post">
   <label for="name">Usuario:</label>
   <input type="text" id="name" name="name" required>
@@ -14,5 +19,8 @@ Registro
   <button type="submit">Registrar</button>
 </form>
 <p class="centered">¿Ya estas registrado? <a href="/login">Inicia sesión</a></p>
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
 
 {% endblock %}

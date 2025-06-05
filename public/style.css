@@ -77,10 +77,11 @@ li {
 }
 
 .warning {
-    background: #ffcc00;
+    background: red;
     color: black;
     padding: 10px;
     border-radius: 4px;
+    margin-bottom: 20px;
 }
 
 /* Media queries para diseño responsive */

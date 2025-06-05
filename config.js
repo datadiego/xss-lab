@@ -10,6 +10,7 @@ app.use(express.static('public'))
 
 nunjucks.configure('views', {
   // autoescape: true,
+  http: false,
   express: app
 })
 app.engine('njk', nunjucks.render)
