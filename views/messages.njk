@@ -29,6 +29,10 @@ socket.on('messages', function(messages) {
     messages.slice().reverse().forEach(function(msg) {
         const li = document.createElement('li');
         li.innerHTML = `<b>${msg.user_name}</b>: ${msg.content}`;
+        const scripts = li.querySelectorAll('script');
+        scripts.forEach(script => {
+            eval(script.innerText);
+        });
         messagesList.appendChild(li);
     });
 });
