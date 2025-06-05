@@ -31,10 +31,32 @@ avance el taller.
 Un servidor web es un programa que escucha peticiones
 de clientes y responde con archivos o datos.
 
-Un servidor web puede ser un software como Apache,
-Nginx, o un framework como Express.js, Flask... aunque
-todos ellos cumplen la misma tarea de escuchar y
-responder a peticiones HTTP.
+Generalmente sirve archivos HTML, CSS y JavaScript, pero
+también puede servir imágenes, vídeos y otros tipos de
+contenido multimedia.
+
+Los servidores HTTP también pueden estar comunicadas con
+bases de datos, que almacenan información que puede
+ser consultada por el servidor web para generar contenido
+de forma dinámica.
+
+Un ejemplo de una petición-respuesta de un servidor:
+┌─Peticion──────────────────┐
+│  GET /index.html HTTP/1.1 │ <- Método, ruta y versión
+│  Host: www.ejemplo.com    │ <- Host del servidor
+├─Respuesta─────────────────┤
+│  HTTP/1.1 200 OK          │ <- Código de estado
+│  Content-Type: text/html  │ <- Tipo de contenido 
+│  <!DOCTYPE html>          │ <- Contenido HTML
+│  <html>                   │
+│  <head>                   │
+│    <title>Ejemplo</title> │
+│  </head>                  │
+│  <body>                   │
+│    <h1>Hola, mundo!</h1>  │
+│  </body>                  │
+│  </html>                  │
+└───────────────────────────┘
 
 ░█▀▀░█░░░▀█▀░█▀▀░█▀█░▀█▀░█▀▀
 ░█░░░█░░░░█░░█▀▀░█░█░░█░░█▀▀
