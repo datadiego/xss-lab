@@ -1,0 +1,63 @@
+                __    __               __   _            
+ _      _____  / /_  / /_  ____ ______/ /__(_)___  ____ _
+| | /| / / _ \/ __ \/ __ \/ __ `/ ___/ //_/ / __ \/ __ `/
+| |/ |/ /  __/ /_/ / / / / /_/ / /__/ ,< / / / / / /_/ / 
+|__/|__/\___/_.___/_/ /_/\__,_/\___/_/|_/_/_/ /_/\__, /  
+                                                /____/   
+Esta guía te ayudará durante el taller a entender las
+  ideas principales que utilizaremos para comenzar a
+     buscar vulnerabilidades en aplicaciones web
+
+   ╔════════════════════════════════════════════╗
+   ║                    Aviso                   ║
+   ║            El hacking es ilegal            ║
+   ║   Ninguna de las técnicas aquí explicadas  ║
+   ║ pueden usarse contra websites públicos sin ║
+   ║       una autorización explícita           ║
+   ╚════════════════════════════════════════════╝
+
+ Puedes encontrar un laboratorio para practicar estas
+  técnicas en https://github.com/datadiego/xss-lab
+
+Necesitarás conocer algunos conceptos básicos para
+poder seguir el taller, no te preocupes si es la primera
+vez que ves estos términos, se irán explicando conforme
+avance el taller.
+
+░█▀▀░█▀▀░█▀▄░█░█░▀█▀░█▀▄░█▀█░█▀▄
+░▀▀█░█▀▀░█▀▄░▀▄▀░░█░░█░█░█░█░█▀▄
+░▀▀▀░▀▀▀░▀░▀░░▀░░▀▀▀░▀▀░░▀▀▀░▀░▀
+
+Un servidor web es un programa que escucha peticiones
+de clientes y responde con archivos o datos.
+
+Un servidor web puede ser un software como Apache,
+Nginx, o un framework como Express.js, Flask... aunque
+todos ellos cumplen la misma tarea de escuchar y
+responder a peticiones HTTP.
+
+░█▀▀░█░░░▀█▀░█▀▀░█▀█░▀█▀░█▀▀
+░█░░░█░░░░█░░█▀▀░█░█░░█░░█▀▀
+░▀▀▀░▀▀▀░▀▀▀░▀▀▀░▀░▀░░▀░░▀▀▀
+
+Un cliente web es un programa que envía peticiones a
+un servidor web y que puede interpretar sus respuestas.
+
+Un cliente web puede ser un navegador como Chrome o
+Firefox, pero también podemos crear *scripts* para
+enviar peticiones a un servidor HTTP, en este taller
+solo necesitarás un navegador web cualquiera.
+
+░█░█░▀█▀░█▄█░█░░
+░█▀█░░█░░█░█░█░░
+░▀░▀░░▀░░▀░▀░▀▀▀
+
+El formato más común de un sitio web es HTML, que sirve
+para estructurar el contenido de la página.
+
+Es lo que generalmente te enviará el servidor web tras
+enviar una petición HTTP.
+
+> Puedes pulsar Ctrl+U en tu navegador para ver el
+  código HTML de una página web para inspeccionarla.
+
