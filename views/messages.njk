@@ -13,7 +13,7 @@
 </form>
 <ul id="messagesList">
 {% for message in messages | reverse %}
-    <li><b>{{ message.user_name }}</b>: {{ message.content }}</li>
+    <li><b>{{ message.user_name }}</b>: {{ message.content }} - {{ message.timestamp }}</li>
 {% endfor %}
 </ul>
 <script src="/socket.io/socket.io.js"></script>
@@ -28,7 +28,7 @@ socket.on('messages', function(messages) {
     messagesList.innerHTML = '';
     messages.slice().reverse().forEach(function(msg) {
         const li = document.createElement('li');
-        li.innerHTML = `<b>${msg.user_name}</b>: ${msg.content};
+        li.innerHTML = `<b>${msg.user_name}</b>: ${msg.content}`;
         messagesList.appendChild(li);
     });
 });

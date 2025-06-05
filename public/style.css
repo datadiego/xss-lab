@@ -1,4 +1,8 @@
 /* Diseño base */
+:root {
+    --font-size-base: 18px;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,6 +10,7 @@
     background: black;
     color: white;
     font-family: Helvetica;
+    font-size: var(--font-size-base);
 }
 
 form {
@@ -13,6 +18,12 @@ form {
     flex-direction: column;
     width: 300px;
     margin: auto;
+}
+
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
 }
 
 input[type="text"],
@@ -54,12 +65,14 @@ main {
     align-items: center;
     padding: 20px;
 }
-ul{
+
+ul {
     border: 1px solid white;
     border-radius: 4px;
-    padding: 10px;
+    padding: 20px;
 }
-li{
+
+li {
     list-style: none;
 }
 
@@ -72,14 +85,20 @@ li{
 
 /* Media queries para diseño responsive */
 @media (max-width: 768px) {
+    :root {
+        --font-size-base: 16px;
+    }
+
     nav {
         gap: 10px;
         text-align: center;
     }
 
     form {
-        width: 90%; /* Ajusta el ancho para que no se salga de la pantalla */
-        max-width: 300px; /* Limita el ancho máximo */
+        width: 90%;
+        /* Ajusta el ancho para que no se salga de la pantalla */
+        max-width: 300px;
+        /* Limita el ancho máximo */
         padding: 10px;
     }
 
@@ -88,33 +107,44 @@ li{
     }
 
     .warning {
-        width: 90%; /* Ajusta el ancho */
-        max-width: 300px; /* Limita el ancho máximo */
-        text-align: center; /* Centra el texto */
+        width: 90%;
+        /* Ajusta el ancho */
+        max-width: 300px;
+        /* Limita el ancho máximo */
+        text-align: center;
+        /* Centra el texto */
     }
 }
 
 @media (max-width: 480px) {
+    :root {
+        --font-size-base: 14px;
+    }
+
     input[type="text"],
     input[type="email"],
     input[type="password"],
     button[type="submit"] {
-        font-size: 16px;
+        font-size: var(--font-size-base);
         padding: 8px;
     }
 
     nav {
-        font-size: 14px;
+        font-size: var(--font-size-base);
     }
 
     form {
-        width: 100%; /* Ocupa todo el ancho disponible */
+        width: 100%;
+        /* Ocupa todo el ancho disponible */
         padding: 10px;
     }
 
     .warning {
-        width: 100%; /* Ocupa todo el ancho disponible */
-        padding: 8px; /* Ajusta el padding */
-        text-align: center; /* Centra el texto */
+        width: 100%;
+        /* Ocupa todo el ancho disponible */
+        padding: 8px;
+        /* Ajusta el padding */
+        text-align: center;
+        /* Centra el texto */
     }
 }
