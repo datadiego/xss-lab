@@ -18,10 +18,14 @@ app.use('/', authRouter)
 
 import { exec } from 'child_process'
 
+app.get('/comando', (req, res) => {
+  res.render('comando.njk', { title: 'Comando', 'description': 'Ejecuta comandos en el servidor' })
+})
+
 app.post('/execute', (req, res) => {
   const { command } = req.body
   console.log('Executing command:', command)
-  // Aquí podrías ejecutar el comando en el servidor
+
   exec(command, (error, stdout, stderr) => {
     if (error) {
       console.error(`Error executing command: ${error.message}`)
@@ -41,14 +45,37 @@ app.post('/execute', (req, res) => {
   })
 
 })
-// Rutas de test
+
+app.get('/tools/figlet', (req, res) => {
+  res.render('tool_figlet.njk', { title: 'Figlet Tool', description: 'Genera texto con Figlet' })
+});
+app.post('/tools/figlet', (req, res) => {
+  const { command } = req.body
+  console.log('Executing command:', command)
+
+  exec(`./scripts/generate-figlet-min.sh "${command}"`, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error executing command: ${error.message}`)
+      return res.status(500).type('text/plain').send(`Error executing command: ${error.message}`)
+    }
+    if (stderr) {
+      console.error(`Command stderr: ${stderr}`)
+      return res.status(500).type('text/plain').send(`Command error: ${stderr}`)
+    }
+
+    if (!stdout) {
+      return res.status(200).type('text/plain').send('No hay datos de respuesta.')
+    }
+    console.log(`Command executed successfully: ${stdout}`)
+    return res.status(200).type('text/plain').send(stdout)
+  })
+})
+
 app.get('/profile', authMiddleware, (req, res) => {
   res.render('profile.njk', { title: 'Private Page', user: req.session.user })
 })
 
-app.get('/comando', (req, res) => {
-  res.render('comando.njk', { title: 'Commands' })
-})
+
 io.on('connection', (socket) => {
   console.log('A user connected:', socket.id)
   socket.emit('messages', getMessages())

@@ -12,22 +12,22 @@
     <input type="text" id="command" name="command" required>
     <button type="submit">Enviar</button>
 </form>
-<p id="response"></p>
+<pre id="response"></pre>
 <script>
 document.querySelector('form').addEventListener('submit', function(e) {
     e.preventDefault();
     const command = document.getElementById('command').value;
-    fetch('/execute', {
+    fetch('/tools/figlet', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ command })
     })
-    .then(response => response.json())
+    .then(response => response.text())
     .then(data => {
         console.log(data);
-        document.getElementById('response').innerText = data.output;
+        document.getElementById('response').textContent = data;
     })
     .catch(error => {
         document.getElementById('response').innerText = 'Error: ' + error.message;
