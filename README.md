@@ -24,13 +24,13 @@ La aplicación utiliza las siguientes tecnologías:
 
 ## Despliegue
 
-Lanza el servidor localmente igual que cualquier aplicación de Node.js:
+Usa Docker:
 
 ```bash
 git clone https://github.com/datadiego/xss-lab.git
 cd xss-lab
-npm install
-npm run dev
+docker-compose up --build
 ```
+
 
 Luego, abre tu navegador y navega a `http://localhost:8000`.
