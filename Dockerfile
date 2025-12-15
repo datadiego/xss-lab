@@ -2,7 +2,10 @@ FROM node:18-slim
 
 WORKDIR /usr/src/app
 RUN apt-get update && \
-    apt-get install -y python3 make g++ && \
+    apt-get install -y python3 make g++ figlet git sqlite3 && \
+    git clone https://github.com/xero/figlet-fonts.git /usr/share/figlet/xero-fonts && \
+    cp /usr/share/figlet/xero-fonts/*.flf /usr/share/figlet/ && \
+    cp /usr/share/figlet/xero-fonts/*.tlf /usr/share/figlet/ && \
     rm -rf /var/lib/apt/lists/*
 
 

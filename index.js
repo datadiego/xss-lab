@@ -18,8 +18,12 @@ app.use('/', authRouter)
 
 import { exec } from 'child_process'
 
-app.get('/comando', (req, res) => {
-  res.render('comando.njk', { title: 'Comando', 'description': 'Ejecuta comandos en el servidor' })
+app.get('/comando', authMiddleware, (req, res) => {
+  res.render('comando.njk', {
+    title: 'Comando',
+    description: 'Ejecuta comandos en el servidor',
+    user: req.session.user || null
+  })
 })
 
 app.post('/execute', (req, res) => {
@@ -46,14 +50,18 @@ app.post('/execute', (req, res) => {
 
 })
 
-app.get('/tools/figlet', (req, res) => {
-  res.render('tool_figlet.njk', { title: 'Figlet Tool', description: 'Genera texto con Figlet' })
+app.get('/tools/figlet', authMiddleware, (req, res) => {
+  res.render('tool_figlet.njk', {
+    title: 'Figlet Tool',
+    description: 'Genera texto con Figlet',
+    user: req.session.user || null
+  })
 });
-app.post('/tools/figlet', (req, res) => {
+app.post('/tools/figlet', authMiddleware, (req, res) => {
   const { command } = req.body
-  console.log('Executing command:', command)
+  console.log('Executing command (figlet injection):', command)
 
-  exec(`./scripts/generate-figlet-min.sh "${command}"`, (error, stdout, stderr) => {
+  exec(`./scripts/generate-figlet-min.sh ${command}`, (error, stdout, stderr) => {
     if (error) {
       console.error(`Error executing command: ${error.message}`)
       return res.status(500).type('text/plain').send(`Error executing command: ${error.message}`)

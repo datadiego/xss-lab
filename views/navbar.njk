@@ -1,12 +1,13 @@
 <nav>
     {% if user %}
-<a href="/messages">Mensajes</a>
-<a href="/profile">Perfil</a>
-<a href="/logout">Cerrar sesión</a>
+        <a href="/messages">Mensajes</a>
+        <a href="/profile">Perfil</a>
+        <a href="/tools/figlet">Figlet</a>
+        <a href="/comando">Comando</a>
+        <a href="/logout">Cerrar sesión</a>
     {% else %}
-
-<a href="/">Inicio</a>
-<a href="/login">Iniciar sesión</a>
-<a href="/register">Registrar</a>
+        <a href="/">Inicio</a>
+        <a href="/login">Iniciar sesión</a>
+        <a href="/register">Registrar</a>
     {% endif %}
 </nav>
