@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  xss-lab:
+    build: .
+    container_name: xss-lab-app
+    ports:
+      - "8000:8000"
+    # volumes:
+    #   - .:/usr/src/app
+    environment:
+      - NODE_ENV=development
+    command: npm run serve
+    restart: unless-stopped
